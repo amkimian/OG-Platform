@@ -9,7 +9,7 @@ subprojects {
     targetCompatibility = 1.6
 
     project.group = 'com.opengamma'
-    project.version = '1.2.2'
+    project.version = '1.2.2-INC1'
 
     def incaptureRepo = 'http://incapture.github.com/RaptureRepo/repository'
 
@@ -42,6 +42,16 @@ subprojects {
                     repository(url: localRepoGit )
                 }
             }
+    }
+
+    task copyProps(type:Copy) {
+       from 'src/main/java'
+       into 'build/classes/main'
+       include '**/*.txt', '**/*.xml', '**/*.properties', '**/*.proto'
+    }
+
+    compileJava {
+       dependsOn copyProps
     }
 
     dependencies {
