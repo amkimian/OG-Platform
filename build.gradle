@@ -9,7 +9,7 @@ subprojects {
     targetCompatibility = 1.6
 
     project.group = 'com.opengamma'
-    project.version = '1.2.2-INC2'
+    project.version = '1.2.2-INC3'
 
     def incaptureRepo = 'http://incapture.github.com/RaptureRepo/repository'
 
@@ -59,6 +59,8 @@ subprojects {
        compileWithNotNeededByRapture { extendsFrom compile, nRapture }
     }
 
+    def loggingVersion = '1.6.2'
+
     dependencies {
            compile 'commons-lang:commons-lang:2.6'
            compile 'commons-io:commons-io:2.3'
@@ -93,11 +95,11 @@ subprojects {
           compile 'javassist:javassist:3.9.0.GA'
           compile 'com.thoughtworks.paranamer:paranamer:2.3'
           compile 'org.antlr:antlr:3.3'
-          compile 'org.quartz-scheduler:quartz:1.8.1'
-          compile 'org.slf4j:slf4j-api:1.5.11'
-          compile 'org.slf4j:log4j-over-slf4j:1.5.11'
-          compile 'org.slf4j:jcl-over-slf4j:1.5.11'
-          compile 'ch.qos.logback:logback-classic:0.9.17'
+          nRapture 'org.quartz-scheduler:quartz:1.8.1'
+          compile "org.slf4j:jcl-over-slf4j:$loggingVersion"
+          compile "org.slf4j:slf4j-api:$loggingVersion"
+          compile "org.slf4j:slf4j-log4j12:$loggingVersion"
+          nRapture 'ch.qos.logback:logback-classic:0.9.17'
           nRapture 'org.springframework:spring-core:3.0.7.RELEASE'
           nRapture 'org.springframework:spring-beans:3.0.7.RELEASE'
           nRapture 'org.springframework:spring-context:3.0.7.RELEASE'
